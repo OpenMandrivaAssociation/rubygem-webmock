@@ -2,7 +2,7 @@
 
 Summary:	HTTP regression testing framework
 Name:		rubygem-%{oname}
-Version:	1.3.5
+Version:	1.6.2
 Release:	%mkrel 1
 License:	GPLv2
 Group:		Development/Ruby
