@@ -1,37 +1,61 @@
-%define	oname	webmock
+# Generated from webmock-1.6.2.gem by gem2rpm5 -*- rpm-spec -*-          
+%define	rbname	webmock
 
 Summary:	HTTP regression testing framework
-Name:		rubygem-%{oname}
+Name:		rubygem-%{rbname}
+
 Version:	1.6.2
-Release:	%mkrel 1
-License:	GPLv2
+Release:	1
 Group:		Development/Ruby
-URL:		http://rubygems.org/gems/%{oname}
-Source0:	http://gems.rubyforge.org/gems/%{oname}-%{version}.gem
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	ruby-RubyGems
-Requires:	ruby
-BuildArch:	noarch
+License:	GPLv2
+URL:		http://github.com/bblimke/webmock
+Source0:	http://rubygems.org/gems/%{rbname}-%{version}.gem
+BuildRequires:	rubygems 
 
 %description
-WebMock allows stubbing HTTP requests and setting expectations on HTTP requests.
+WebMock allows stubbing HTTP requests and setting expectations on HTTP
+requests.
+
+%package	doc
+Summary:	Documentation for %{name}
+Group:		Books/Computer books
+Requires:	%{name} = %{EVRD}
+
+%description	doc
+Documents, RDoc & RI documentation for %{name}.
 
 %prep
+%setup -q
 
 %build
+%gem_build -f '(spec|vendor|test)/'
 
 %install
-rm -rf %{buildroot}
-gem install --local --install-dir %{buildroot}/%{ruby_gemdir} --force %{SOURCE0}
-
-chmod g-w,g+r,o+r -R %{buildroot}
+%gem_install
 
 %clean
 rm -rf %{buildroot}
 
 %files
-%defattr(-,root,root)
-%doc %{ruby_gemdir}/doc/%{oname}-%{version}
-%{ruby_gemdir}/cache/%{oname}-%{version}.gem
-%{ruby_gemdir}/gems/%{oname}-%{version}
-%{ruby_gemdir}/specifications/%{oname}-%{version}.gemspec
+%dir %{ruby_gemdir}/gems/%{rbname}-%{version}
+%dir %{ruby_gemdir}/gems/%{rbname}-%{version}/lib
+%{ruby_gemdir}/gems/%{rbname}-%{version}/lib/*.rb
+%dir %{ruby_gemdir}/gems/%{rbname}-%{version}/lib/webmock
+%{ruby_gemdir}/gems/%{rbname}-%{version}/lib/webmock/*
+%dir %{ruby_gemdir}/gems/%{rbname}-%{version}/spec
+%{ruby_gemdir}/gems/%{rbname}-%{version}/spec/*.rb
+%{ruby_gemdir}/gems/%{rbname}-%{version}/spec/*.txt
+%dir %{ruby_gemdir}/gems/%{rbname}-%{version}/spec/util
+%{ruby_gemdir}/gems/%{rbname}-%{version}/spec/util/*.rb
+%dir %{ruby_gemdir}/gems/%{rbname}-%{version}/spec/vendor
+%{ruby_gemdir}/gems/%{rbname}-%{version}/spec/vendor/addressable
+%{ruby_gemdir}/gems/%{rbname}-%{version}/spec/vendor/crack
+%{ruby_gemdir}/gems/%{rbname}-%{version}/spec/vendor/right_http_connection-1.2.4
+%dir %{ruby_gemdir}/gems/%{rbname}-%{version}/test
+%{ruby_gemdir}/gems/%{rbname}-%{version}/test/*.rb
+%{ruby_gemdir}/specifications/%{rbname}-%{version}.gemspec
+
+%files doc
+%doc %{ruby_gemdir}/gems/%{rbname}-%{version}/*.md
+%doc %{ruby_gemdir}/gems/%{rbname}-%{version}/LICENSE
+%doc %{ruby_gemdir}/doc/%{rbname}-%{version}
