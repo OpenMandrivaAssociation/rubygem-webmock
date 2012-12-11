@@ -59,3 +59,16 @@ rm -rf %{buildroot}
 %doc %{ruby_gemdir}/gems/%{rbname}-%{version}/*.md
 %doc %{ruby_gemdir}/gems/%{rbname}-%{version}/LICENSE
 %doc %{ruby_gemdir}/doc/%{rbname}-%{version}
+
+
+%changelog
+* Mon Mar 14 2011 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.6.2-1
++ Revision: 644660
+- regenerate spec with gem2rpm5
+- new release: 1.6.2
+
+* Fri Sep 17 2010 Per Øyvind Karlsen <peroyvind@mandriva.org> 1.3.5-1mdv2011.0
++ Revision: 579220
+- import rubygem-webmock
+
+
