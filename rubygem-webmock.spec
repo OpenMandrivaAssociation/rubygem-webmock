@@ -5,7 +5,7 @@ Summary:	HTTP regression testing framework
 Name:		rubygem-%{rbname}
 
 Version:	1.6.2
-Release:	1
+Release:	2
 Group:		Development/Ruby
 License:	GPLv2
 URL:		http://github.com/bblimke/webmock
