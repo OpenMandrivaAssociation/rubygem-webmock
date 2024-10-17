@@ -8,7 +8,7 @@ Version:	1.6.2
 Release:	2
 Group:		Development/Ruby
 License:	GPLv2
-URL:		http://github.com/bblimke/webmock
+URL:		https://github.com/bblimke/webmock
 Source0:	http://rubygems.org/gems/%{rbname}-%{version}.gem
 BuildRequires:	rubygems 
 
